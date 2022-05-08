@@ -1,13 +1,17 @@
+const _ = require("lodash");
 const { Schema } = require("mongoose");
+
+const schemaOpts = require("./common/options");
 
 let schema = new Schema({
           _id: {
-                    type: Schema.Types.ObjectId,
-                    required: true
+                    type: Schema.Types.ObjectId
           },
           name: {
                     type: String,
-                    required: true
+                    required: true,
+                    minlength: 3,
+                    maxlength: 32
           },
           email: {
                     type: String,
@@ -15,16 +19,15 @@ let schema = new Schema({
           },
           password: {
                     type: String,
-                    required: true
+                    required: true,
+                    bcrypt: true
           },
-          created: {
-                    type: Date,
-                    required: true
-          },
-          modified: {
-                    type: Date,
+          apikey: {
+                    type: String,
                     required: true
           }
-}, { collection: "users" });
+}, _.extend({ collection: "users" }, schemaOpts));
+
+schema.plugin(require("mongoose-bcrypt"));
 
 module.exports = schema;

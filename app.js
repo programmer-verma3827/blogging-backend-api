@@ -21,6 +21,11 @@ _.each(schemaList, (schema, key) => {
 });
 Registry.set("models", models);
 
+// Adding Middleware for Body Parser
+const bodyParser = require("body-parser");
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
 // Initializing Routes
 let routerList = require("./src/routes");
 _.each(routerList, (router, key) => {
