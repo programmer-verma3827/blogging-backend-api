@@ -5,12 +5,8 @@ class Auth extends Base {
                     super(req, res, next);
           }
 
-          login() {
-
-          }
-
-          register() {
-                    
+          async register() {
+                    this.res.send("Hello")
           }
 }
 

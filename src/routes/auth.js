@@ -3,13 +3,9 @@ const router = express.Router();
 
 const Controller = require("../controllers");
 
-router.get("/login", (req, res, next) => {
-	let auth = new Controller.Auth(req, res, next);
-	auth.login();	
-});
-
-router.post("/register", (req, res, next) => {
-	res.send("Yo")
+router.get("/register", async (req, res, next) => {
+	let ctr = new Controller.Auth(req, res, next);
+	await ctr.executeMethod("register");
 });
 
 module.exports = router;
