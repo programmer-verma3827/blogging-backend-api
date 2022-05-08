@@ -1,5 +1,15 @@
 {
           "app": {
                     "port": 9999
+          },
+          "database": {
+                    "mongodb": {
+                              "user": "",
+                              "password": "",
+                              "db": "",
+                              "host": "",
+                              "port": "",
+                              "options": ""
+                    }
           }
 }
